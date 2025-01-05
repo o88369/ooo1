@@ -16,9 +16,7 @@ proxies: ~
 proxy-groups: ~
 rules: ~
 {% else %}
-Proxy: ~
-Proxy Group: ~
-Rule: ~
+333
 {% endif %}
 
 {% endif %}
