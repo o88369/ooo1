@@ -12,13 +12,9 @@ dns:
   listen: :1053
 {% endif %}
 {% if local.clash.new_field_name == "true" %}
-proxies: ~
-proxy-groups: ~
-rules: ~
+1
 {% else %}
-Proxy: ~
-Proxy Group: ~
-Rule: ~
+1
 {% endif %}
 
 {% endif %}
