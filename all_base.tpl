@@ -6,7 +6,7 @@ allow-lan: {{ default(global.clash.allow_lan, "true") }}
 mode: Rule
 log-level: {{ default(local.clash.log_level, "info") }}
 external-controller: {{ default(global.clash.external_controller, "127.0.0.1:9090") }}
-{% if default(request.clash.dns, "") == "1" %}
+{% if default(local.clash.dns, "") == "true" %}
 dns:
   enable: true
   listen: :1053
