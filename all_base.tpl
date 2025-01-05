@@ -1,7 +1,7 @@
 {% if request.target == "clash" or request.target == "clashr" %}
 
-port: {{ default(global.clash.http_port, "7891") }}
-socks-port: {{ default(global.clash.socks_port, "7892") }}
+port: {{ default(global.clash.http_port, "7890") }}
+socks-port: {{ default(global.clash.socks_port, "7891") }}
 allow-lan: {{ default(global.clash.allow_lan, "true") }}
 mode: Rule
 log-level: {{ default(global.clash.log_level, "info") }}
