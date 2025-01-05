@@ -11,7 +11,7 @@ dns:
   listen: :1053
 {% if local.clash.new1_field_name == "7" %}
 proxies: ~
-proxy--groups: ~
+proxy-groups: ~
 rules: ~
 {% else %}
 Proxy: ~
