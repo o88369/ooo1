@@ -9,7 +9,7 @@ external-controller: {{ default(global.clash.external_controller, "127.0.0.1:909
 dns:
   enable: true
   listen: :1053
-{% if local.clash.new_field_name == "true" %}
+{% if local.clash.new_field_name == "1" %}
 proxies: ~
 proxy-groups: ~
 rules: ~
