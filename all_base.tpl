@@ -17,7 +17,6 @@ dns:
 333
 {% endif %}
 
-{% endif %}
 {% if request.target == "surge" %}
 
 [General]
