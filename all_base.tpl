@@ -11,7 +11,7 @@ dns:
   enable: true
   listen: :1053
 {% endif %}
-{% if local.clash.new1_field_name == "true" %}
+{% if local.clash.new_field_name == "true" %}
 proxies: ~
 proxy-groups: ~
 rules: ~
