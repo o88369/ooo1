@@ -12,9 +12,9 @@ dns:
   listen: :1053
 {% endif %}
 {% if local.clash.new_field_name == "true" %}
-1
+222
 {% else %}
-1
+333
 {% endif %}
 
 {% endif %}
