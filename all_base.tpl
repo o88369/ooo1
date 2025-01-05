@@ -16,9 +16,9 @@ proxies: ~
 proxy-groups: ~
 rules: ~
 {% else %}
-Proxy: ~
-Proxy Group: ~
-Rule: ~
+proxies: ~
+proxy-groups: ~
+rules: ~
 {% endif %}
 
 {% endif %}
