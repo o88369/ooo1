@@ -61,7 +61,7 @@
       "type": "mixed",
       "listen": "127.0.0.1",
       "listen_port": 7892,
-      "sniff": true,
+      "sniff": true
     }
   ],
   
@@ -85,9 +85,8 @@
       { "tag": "🔯 香港自动", "type": "urltest", "outbounds": ["{all}"], "filter": [{ "action": "include", "keywords": ["🇭🇰|HK|hk|香港|港|HongKong"] }], "url": "http://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50 },
       { "tag": "♻️ 自动选择", "type": "urltest", "outbounds": ["{all}"], "filter": [{ "action": "exclude", "keywords": ["网站|地址|剩余|过期|时间|有效"] }], "url": "http://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50 },
       { "tag": "GLOBAL", "type": "selector", "outbounds": ["{all}"]},
-      { "tag": "🎯 全球直连", "type": "direct" }
+      { "tag": "🎯 全球直连", "type": "direct" },
       { "tag": "ub1", "type": "selector", "outbounds": ["ub1"]}
-
     ],
     
     "route": 
