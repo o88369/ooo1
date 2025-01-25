@@ -567,6 +567,6 @@ rule-providers:
     url: >-
       https://ghproxy.cn/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Bing.list
 rules:
-  - DOMAIN-KEYWORD,openwrt,自动
-  - DOMAIN-KEYWORD,tiktokcdn,自动
-  - DOMAIN-SUFFIX,googlevideo.com,自动
+  - DOMAIN-KEYWORD,openwrt,中间
+  - DOMAIN-KEYWORD,tiktokcdn,中间
+  - DOMAIN-SUFFIX,googlevideo.com,中间
