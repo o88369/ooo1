@@ -34,7 +34,7 @@
     "final": "localDns",
     "strategy": "ipv4_only"
   },
-
+  "outbounds": [ ],
     "inbounds": [
     {
       "type": "tun",
