@@ -104,7 +104,10 @@
        {"clash_mode": "direct", "outbound": "🎯 全球直连"},
        {"clash_mode": "global", "outbound": "GLOBAL"},
        {"clash_mode": "global", "outbound": "GLOBAL"},
-
+       {"domain_keyword": "tiktokcdn", "outbound": "中间"},
+       {"domain_keyword": "googlevideo.com", "outbound": "中间"},
+       {"domain": ["access.mypikpak.com", "access.mypikpak.net", "access.pikpak.me", "ccess.pikpakdrive.com"], "outbound": "🚀 节点选择"},
+       {"domain_keyword": ["mypikpak", "pikpak"], "outbound": "direct"},
        {"domain": ["clash.razord.top", "yacd.metacubex.one", "yacd.haishan.me", "d.metacubex.one"], "outbound": "🎯 全球直连"},
        {"rule_set": "geosite-private", "outbound": "🎯 全球直连"},
        {"rule_set": "geosite-chat", "outbound": "🤖 OpenAI"},
