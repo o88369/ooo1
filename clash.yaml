@@ -1,1 +1,572 @@
-11
+mixed-port: 7893
+tcp-concurrent: true
+allow-lan: true
+ipv6: true
+log-level: debug
+find-process-mode: strict
+unified-delay: false
+
+external-controller: 0.0.0.0:9093
+secret: '123456'
+external-ui: ui
+external-ui-name: ss1
+external-ui-url: "https://ghproxy.cn/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+
+# Tun 配置
+tun:
+  enable: false
+  stack: mixed
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+
+profile:
+  store-selected: true 
+  store-fake-ip: true  
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+
+geodata-mode: true
+geox-url:
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
+
+geo-auto-update: false # 是否自动更新 geodata
+geo-update-interval: 24 # 更新间隔，单位：小时
+dns:
+  enable: true
+  listen: '127.0.0.1:8853'
+  prefer-h3: true
+  cache-algorithm: arc
+  default-nameserver:
+    - system
+    - tls://1.12.12.12:853
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-filter:
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - 'time.*.com'
+    - 'time.*.gov'
+    - 'time.*.edu.cn'
+    - 'time.*.apple.com'
+    - 'time1.*.com'
+    - 'time2.*.com'
+    - 'time3.*.com'
+    - 'time4.*.com'
+    - 'time5.*.com'
+    - 'time6.*.com'
+    - 'time7.*.com'
+    - 'ntp.*.com'
+    - 'ntp1.*.com'
+    - 'ntp2.*.com'
+    - 'ntp3.*.com'
+    - 'ntp4.*.com'
+    - 'ntp5.*.com'
+    - 'ntp6.*.com'
+    - 'ntp7.*.com'
+    - '*.time.edu.cn'
+    - '*.ntp.org.cn'
+    - '+.pool.ntp.org'
+    - 'time1.cloud.tencent.com'
+    - 'music.163.com'
+    - '*.music.163.com'
+    - '*.126.net'
+    - 'musicapi.taihe.com'
+    - 'music.taihe.com'
+    - 'songsearch.kugou.com'
+    - 'trackercdn.kugou.com'
+    - '*.kuwo.cn'
+    - 'api-jooxtt.sanook.com'
+    - 'api.joox.com'
+    - 'joox.com'
+    - 'y.qq.com'
+    - '*.y.qq.com'
+    - 'streamoc.music.tc.qq.com'
+    - 'mobileoc.music.tc.qq.com'
+    - 'isure.stream.qqmusic.qq.com'
+    - 'dl.stream.qqmusic.qq.com'
+    - 'aqqmusic.tc.qq.com'
+    - 'amobile.music.tc.qq.com'
+    - '*.xiami.com'
+    - '*.music.migu.cn'
+    - 'music.migu.cn'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - 'msftconnecttest.com'
+    - 'msftncsi.com'
+    - 'localhost.ptlogin2.qq.com'
+    - 'localhost.sec.qq.com'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.microsoft.com'
+    - 'xnotify.xboxlive.com'
+    - '+.ipv6.microsoft.com'
+    - '+.battlenet.com.cn'
+    - '+.wotgame.cn'
+    - '+.wggames.cn'
+    - '+.wowsgame.cn'
+    - '+.wargaming.net'
+    - 'proxy.golang.org'
+    - 'stun.*.*'
+    - 'stun.*.*.*'
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
+    - 'heartbeat.belkin.com'
+    - '*.linksys.com'
+    - '*.linksyssmartwifi.com'
+    - '*.router.asus.com'
+    - 'mesu.apple.com'
+    - 'swscan.apple.com'
+    - 'swquery.apple.com'
+    - 'swdownload.apple.com'
+    - 'swcdn.apple.com'
+    - 'swdist.apple.com'
+    - 'lens.l.google.com'
+    - 'stun.l.google.com'
+    - '*.square-enix.com'
+    - '*.finalfantasyxiv.com'
+    - '*.ffxiv.com'
+    - '*.ff14.sdo.com'
+    - 'ff.dorado.sdo.com'
+    - '*.mcdn.bilivideo.cn'
+    - '+.media.dssott.com'
+    - '+.pvp.net'
+  nameserver:
+    - 'https://223.5.5.5/dns-query#h3=true'
+    - 'https://1.1.1.1/dns-query#h3=true'
+  fallback:
+    - 'https://dns.google/dns-query'
+  fallback-filter:
+    geoip: false
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+      - 127.0.0.1/32
+    domain:
+      - '+.facebook.com'
+      - '+.twitter.com'
+      - '+.google.com'
+      - '+.googleapis.com'
+      - '+.google.cn'
+      - '+.googleapis.cn'
+      - '+.xn--ngstr-lra8j.com'
+      - '+.googlevideo.com'
+      - '+.gvt1.com'
+      - '+.gmail.com'
+      - '+.youtube.com'
+      - '+.youtu.be'
+      - '+.gvt0.com'
+      - '+.gvt2.com'
+      - '+.gvt3.com'
+      - '+.gstatic.com'
+      - '+.265.com'
+      - '+.2mdn.net'
+      - '+.app-measurement.com'
+      - '+.c.admob.com'
+      - '+.clickserve.dartsearch.net'
+      - '+.crl.pki.goog'
+      - '+.doubleclick.net'
+      - '+.firebase-settings.crashlytics.com'
+      - '+.google-analytics.com'
+      - '+.googleadservices.com'
+      - '+.googleanalytics.com'
+      - '+.googleoptimize.com'
+      - '+.googlesyndication.com'
+      - '+.googletagmanager.com'
+      - '+.googletagservices.com'
+#  nameserver-policy:
+#   'geosite:private,apple-cn,apple@cn,cn':
+#       - 114.114.114.114
+#   'geosite:geolocation-!cn':
+#       - 'https://8.8.8.8/dns-query#PROXY'
+#subscribe-url: >-
+#  https://ELNpHZa.doggygo.top:8443/api/v1/client/aa4bcd3d285154c06d75f73ed4ad78fd
+
+proxy-groups:
+  - name: 手动切换
+    icon: 'https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/%24tash.png'
+    type: select
+    include-all: null
+    proxies:
+      - DIRECT
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+    use:
+      - sub0
+  - name: 流量无限
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    use:
+      - sub2
+    interval: 270
+    filter: ^(?!.*(?:香港集群|香港-专线)).+$
+    proxies:
+      - ub1
+      - ub2
+      - ub0
+    lazy: true
+  - name: 美国节点
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+    type: url-test
+    url: 'http://1.1.1.1/generate_204'
+    interval: 300
+    include-all: null
+    filter: "(?i)🇺🇸|美国|洛杉矶|圣何塞|(\b(US|United States)\b)"
+    use:
+      - sub1
+      - sub0
+  - name: 狮城节点
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+    type: url-test
+    url: 'http://1.1.1.1/generate_204'
+    interval: 300
+    include-all: null
+    filter: "(?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)"
+    use:
+      - sub1
+      - sub0
+  - name: 香港节点
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+    type: url-test
+    url: 'http://1.1.1.1/generate_204'
+    interval: 300
+    include-all: null
+    use:
+      - sub1
+      - sub0
+    filter: "(?i)🇭🇰|香港|(\b(HK|Hong)\b)"
+    lazy: true
+    timeout: 1000
+  - name: 日本节点
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+    type: url-test
+    url: 'http://1.1.1.1/generate_204'
+    interval: 300
+    include-all: null
+    filter: "(?i)🇯🇵|日本|东京|(\b(JP|Japan)\b)"
+    use:
+      - sub1
+      - sub0
+  - name: 台湾节点
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+    type: url-test
+    url: 'http://1.1.1.1/generate_204'
+    interval: 300
+    filter: "(?i)🇨🇳|🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)"
+    use:
+      - sub1
+      - sub0
+  - include-all: null
+    name: 自动
+    proxies:
+      - 流量无限
+      - 日本节点
+      - 狮城节点
+      - 美国节点
+      - 台湾节点
+    type: select
+    url: 'http://1.1.1.1/generate_204'
+    interval: 300
+    lazy: true
+    timeout: 1000
+  - name: tiktok
+    proxies:
+      - 狮城节点
+      - 流量无限
+      - DIRECT
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+    type: select
+  - name: 油管
+    proxies:
+      - 狮城节点
+      - DIRECT
+      - 流量无限
+      - 日本节点
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+    type: select
+  - name: 兜底分流
+    icon: 'https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/friestash.png'
+    type: select
+    proxies:
+      - DIRECT
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 流量无限
+      - 手动切换
+      - 自动
+  - name: 国际媒体
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+    include-all: null
+  - name: 微软服务
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+  - name: 谷歌服务
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
+    type: select
+    proxies:
+      - 美国节点
+      - 流量无限
+      - 香港节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+  - name: bing
+    proxies:
+      - DIRECT
+      - 流量无限
+      - 日本节点
+      - 狮城节点
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+    type: select
+  - name: 电报消息
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+    type: select
+    proxies:
+      - 日本节点
+      - 流量无限
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 台湾节点
+      - 手动切换
+  - name: 推特消息
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
+    type: select
+    proxies:
+      - 美国节点
+      - 手动切换
+      - 香港节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+      - DIRECT
+  - name: 苹果
+    proxies:
+      - DIRECT
+      - 台湾节点
+      - 日本节点
+      - 狮城节点
+      - 美国节点
+      - 香港节点
+    type: select
+  - name: AI
+    icon: 'https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png'
+    type: select
+    proxies:
+      - 日本节点
+      - 手动切换
+      - 流量无限
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 台湾节点
+  - name: 游戏平台
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+  - name: Emby
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png
+    type: select
+    include-all: null
+    proxies:
+      - DIRECT
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+  - name: Spotify
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 狮城节点
+      - 日本节点
+      - 台湾节点
+  - name: 国外网站
+    icon: >-
+      https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
+    type: select
+    proxies:
+      - 狮城节点
+      - 流量无限
+      - DIRECT
+      - 手动切换
+      - 香港节点
+      - 美国节点
+      - 日本节点
+      - 台湾节点
+  - name: 国内网站
+    proxies:
+      - DIRECT
+      - 台湾节点
+      - 日本节点
+      - 狮城节点
+      - 美国节点
+      - 香港节点
+      - 自动
+    type: select
+  - name: 广告
+    proxies:
+      - DIRECT
+      - 手动切换
+      - REJECT
+    type: select
+
+  - name: ub0
+    type: select
+    proxies:
+      - REJECT
+    use:
+      - sub0
+  - name: ub1
+    type: select
+    proxies:
+      - REJECT
+    use:
+      - sub1
+  - name: ub2
+    type: select
+    proxies:
+      - REJECT
+    use:
+      - sub2
+
+rule-providers:
+  # 局域网
+  Lan: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Lan.list, type: http}
+
+  # 广告拦截
+  Reject: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Reject.list, type: http}
+
+  # 苹果服务
+  Apple: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Apple.list, type: http}
+  AppleProxy: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/AppleProxy.list, type: http}
+  
+  # 微软服务
+  Microsoft: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Microsoft.list, type: http}
+  OneDrive: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/OneDrive.list, type: http}
+  Github: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Github.list, type: http}
+
+  # 谷歌服务
+  Youtube: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/YouTube.list, type: http}
+  Google: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Google.list, type: http}
+
+  # 电报消息
+  Telegram: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Telegram.list, type: http}
+
+  # 推特消息
+  Twitter: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Twitter.list, type: http}
+
+  # 游戏平台
+  Steam: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Steam.list, type: http}
+  Epic: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Epic.list, type: http}
+
+  # AI平台
+  AI: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/AI.list, type: http}
+
+  # Emby
+  Emby: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Emby.list, type: http}
+
+  # Spotify
+  Spotify: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Spotify.list, type: http}
+  
+  # 国际媒体
+  Bahamut: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Bahamut.list, type: http}
+  Netflix: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Netflix.list, type: http}
+  Disney: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/Disney.list, type: http}
+  PrimeVideo: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/PrimeVideo.list, type: http}
+  HBO: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/HBO.list, type: http}
+  TikTok: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/TikTok.list, type: http}
+
+  # 代理网站
+  ProxyGFW: {behavior: classical, format: text, interval: 86400, url: https://github.com/Repcz/Tool/raw/X/Stash/Rules/ProxyGFW.list, type: http}
+
+  国内:
+    type: http
+    behavior: classical
+    interval: 86400
+    url: >-
+      https://ghproxy.cn/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/ChinaDomain.list
+    format: text
+  bing:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: >-
+      https://ghproxy.cn/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Bing.list
+rules:
+  - DOMAIN-KEYWORD,openwrt,自动
+  - DOMAIN-KEYWORD,tiktokcdn,自动
+  - DOMAIN-SUFFIX,googlevideo.com,自动
