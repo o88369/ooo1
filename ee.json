@@ -90,7 +90,7 @@
       { "tag": "台湾", "type": "urltest", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "exclude", "keywords": ["(台|新北|彰化|TW|Taiwan"] }], "url": "http://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50 },
 
 
-      { "tag": "GLOBAL", "type": "selector", "outbounds": ["{ub0}","{ub1}"],
+      { "tag": "GLOBAL", "type": "selector", "outbounds": ["{ub0}","{ub1}"]},
       { "tag": "🎯 全球直连", "type": "direct" },
       { "tag": "ub0", "type": "selector", "outbounds": ["{ub0}"]},
       { "tag": "ub1", "type": "selector", "outbounds": ["{ub1}"]},
