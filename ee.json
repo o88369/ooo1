@@ -26,11 +26,12 @@
      "servers": 
      [
        {"tag": "dns_direct", "address": "223.5.5.5", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
+       {"tag": "dns_outbound", "address": "https://1.1.1.1/dns-query", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
        {"tag": "dns_proxy", "address": "tls://8.8.8.8", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🚀 节点选择"}
      ],
      "rules": 
      [
-       {"outbound": "any", "server": "dns_direct", "disable_cache": true},
+       {"outbound": "any", "server": "dns_outbound"},
        {"clash_mode": "Direct", "server": "dns_direct"},
        {"clash_mode": "Global", "server": "dns_proxy"},
        {"rule_set": "geosite-cn", "action": "route","server": "dns_direct"},
@@ -64,7 +65,7 @@
   ],
   
     "outbounds": [
-      { "tag": "流量无限", "type": "urltest", "outbounds": ["{ub2}"] ,"url": "http://www.gstatic.com/generate_204", "interval": "5m", "tolerance": 50 },
+      { "tag": "流量无限", "type": "urltest", "outbounds": ["{ub2}"] ,"url": "http://www.gstatic.com/generate_204", "interval": "5m", "tolerance": 3 },
       { "tag": "中间", "type": "selector", "outbounds": ["流量无限", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换", "♻️ 自动选择", "🎯 全球直连","ub0","ub1","ub2","新加坡","韩国","台湾", "🔯 香港自动"] },
       { "tag": "🚀 节点选择", "type": "selector", "outbounds": ["🔯 香港自动", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换", "♻️ 自动选择", "🎯 全球直连"] },
       { "tag": "📹 YouTube", "type": "selector", "outbounds": ["♻️ 自动选择","🚀 节点选择", "流量无限", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换","新加坡","韩国","台湾", "🔯 香港自动"] },
