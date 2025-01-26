@@ -93,9 +93,9 @@
 
       { "tag": "GLOBAL", "type": "selector", "outbounds": ["{all}"]},
       { "tag": "🎯 全球直连", "type": "direct" },
-      { "tag": "ub0", "type": "selector", "outbounds": ["{ub0}"]},
-      { "tag": "ub1", "type": "selector", "outbounds": ["{ub1}"]},
-      { "tag": "ub2", "type": "selector", "outbounds": ["{ub2}"]}
+      { "tag": "ub0", "type": "selector", "outbounds": ["REJECT","{ub0}"]},
+      { "tag": "ub1", "type": "selector", "outbounds": ["REJECT","{ub1}"]},
+      { "tag": "ub2", "type": "selector", "outbounds": ["REJECT","{ub2}"]}
     ],
     
     "route": 
