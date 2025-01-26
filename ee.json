@@ -4,7 +4,6 @@
       "level": "info",
       "timestamp": true
     },
-    
     "experimental": {
       "clash_api": {
         "external_controller": "0.0.0.0:9095",
@@ -14,104 +13,129 @@
         "external_ui_download_detour": "direct",
         "default_mode": "rule"
       },
-    "cache_file": {
+      "cache_file": {
         "enabled": true,
         "store_fakeip": true,
         "store_rdrc": true
       }
     },
-  
-   "dns": 
-   {
-    "fakeip": {
+    "dns": {
+      "fakeip": {
         "enabled": true,
         "inet4_range": "198.18.0.0/15",
         "inet6_range": "fc00::/18"
       },
-     "servers": 
-     [
-       {"tag": "dns_direct", "address": "local", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
-       {"tag": "dns_outbound", "address": "h3://1.1.1.1/dns-query", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
-       {"tag": "dns_proxy", "address": "h3://8.8.8.8/dns-query", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🚀 节点选择"}
-     ],
-     "rules": 
-     [
+      "servers": [
         {
-            "outbound": "any",
-            "server": "dns_outbound"
-          },
-          {
-            "clash_mode": "direct",
-            "server": "dns_direct"
-          },
-          {
-            "clash_mode": "global",
-            "server": "dns_proxy"
-          },
-          {
-            "query_type": [
-              "A",
-              "AAAA"
-            ],
-            "rule_set": "geosite-cn",
-            "server": "fakeip"
-          },
-          {
-            "rule_set": "geosite-cn",
-            "server": "dns_direct"
-          },
-          {
-            "type": "logical",
-            "mode": "and",
-            "rules": [
-              {
-                "rule_set": "geosite-geolocation-!cn",
-                "invert": true
-              },
-              {
-                "rule_set": "geoip-cn"
-              }
-            ],
-            "server": "dns_proxy",
-            "client_subnet": "114.114.114.114/24"
-          },
-          {
-            "query_type": [
-              "A",
-              "AAAA"
-            ],
-            "server": "fakeip"
+          "tag": "dns_direct",
+          "address": "local",
+          "address_strategy": "ipv4_only",
+          "strategy": "ipv4_only",
+          "detour": "🎯 全球直连"
+        },
+        {
+          "tag": "dns_outbound",
+          "address": "https://1.1.1.1/dns-query",
+          "address_strategy": "ipv4_only",
+          "strategy": "ipv4_only",
+          "detour": "🎯 全球直连"
+        },
+        {
+          "tag": "dns_proxy",
+          "address": "h3://8.8.8.8/dns-query",
+          "address_strategy": "ipv4_only",
+          "strategy": "ipv4_only",
+          "detour": "🚀 节点选择"
+        },
+        {
+            "tag": "fakeip",
+            "address": "fakeip"
           }
-     ],
-     "final": "dns_proxy",
-     "strategy": "ipv4_only"
-  },
-  
-  "inbounds": [
-    {
-      "type": "tun",
-      "address": [
-        "172.19.0.0/30",
-        "fdfe:dcba:9876::0/126"
       ],
-      "auto_route": true,
-      "auto_redirect": true,
-      "strict_route": true,
-      "stack": "system",
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "0.0.0.0",
-          "server_port": 7891
+      "rules": [
+        {
+          "outbound": "any",
+          "server": "dns_outbound"
+        },
+        {
+          "clash_mode": "direct",
+          "server": "dns_direct"
+        },
+        {
+          "clash_mode": "global",
+          "server": "dns_proxy"
+        },
+        {
+
+          "query_type": [
+            "A",
+            "AAAA"
+          ],
+          "rule_set": "geosite-cn",
+          "server": "fakeip"
+        },
+        {
+          "rule_set": "geosite-cn",
+          "server": "dns_direct"
+        },
+        {
+          "type": "logical",
+          "mode": "and",
+          "rules": [
+            {
+              "rule_set": "geosite-geolocation-!cn",
+              "invert": true
+            },
+            {
+              "rule_set": "geoip-cn"
+            }
+          ],
+          "server": "dns_proxy",
+          "client_subnet": "114.114.114.114/24"
+        },
+        {
+            "inbound": [
+                "tun-in"
+              ],
+          "query_type": [
+            "A",
+            "AAAA"
+          ],
+          "server": "fakeip"
         }
-      }
+      ],
+      "final": "dns_proxy",
+      "strategy": "ipv4_only"
     },
-    {
-      "type": "mixed",
-      "listen": "0.0.0.0",
-      "listen_port": 7892
-    }
-  ],
+    "inbounds": [
+      {
+        "tag": "tun-in",
+
+        "type": "tun",
+        "address": [
+          "172.19.0.0/30",
+          "fdfe:dcba:9876::0/126"
+        ],
+        "auto_route": true,
+        "auto_redirect": true,
+        "strict_route": true,
+        "stack": "system",
+        "platform": {
+          "http_proxy": {
+            "enabled": true,
+            "server": "0.0.0.0",
+            "server_port": 7891
+          }
+        }
+      },
+      {
+        "tag": "mixed-in",
+
+        "type": "mixed",
+        "listen": "0.0.0.0",
+        "listen_port": 7892
+      }
+    ],
   
     "outbounds": [
       { "tag": "流量无限", "type": "urltest", "outbounds": ["{ub2}"] ,"url": "http://www.gstatic.com/generate_204", "interval": "5m", "tolerance": 3 },
@@ -153,9 +177,32 @@
      "auto_detect_interface": true,
      "final": "🐠 漏网之鱼",
      "rules": 
+  
      [
+        {
+            "type": "logical",
+            "mode": "or",
+            "rules":[
+              {
+                "port":53
+              },
+              {
+                "protocol": "dns"
+              }
+            ],
+            "action": "hijack-dns"
+          },
        {"action": "sniff"},
-       {"protocol": "dns", "action": "hijack-dns"},
+       {
+        "inbound": ["tun-in", "mixed-in"],
+          "action": "resolve",
+          "strategy": "prefer_ipv4"
+        },
+        {
+          "inbound": ["tun-in", "mixed-in"],
+          "action": "sniff",
+          "timeout": "1s"
+        },
        {"domain_keyword": "tiktokcdn", "outbound": "中间"},
        {"domain_keyword": "googlevideo.com", "outbound": "中间"},
        {"domain": ["access.mypikpak.com", "access.mypikpak.net", "access.pikpak.me", "ccess.pikpakdrive.com"], "outbound": "🚀 节点选择"},
