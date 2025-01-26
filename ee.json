@@ -30,7 +30,7 @@
       },
      "servers": 
      [
-       {"tag": "dns_direct", "address": "202.103.225.68", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
+       {"tag": "dns_direct", "address": "local", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
        {"tag": "dns_outbound", "address": "h3://1.1.1.1/dns-query", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
        {"tag": "dns_proxy", "address": "h3://8.8.8.8/dns-query", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🚀 节点选择"}
      ],
