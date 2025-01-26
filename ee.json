@@ -23,19 +23,65 @@
   
    "dns": 
    {
+    "fakeip": {
+        "enabled": true,
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
+      },
      "servers": 
      [
-       {"tag": "dns_direct", "address": "local", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
+       {"tag": "dns_direct", "address": "202.103.225.68", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
        {"tag": "dns_outbound", "address": "h3://1.1.1.1/dns-query", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
        {"tag": "dns_proxy", "address": "h3://8.8.8.8/dns-query", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🚀 节点选择"}
      ],
      "rules": 
      [
-       {"outbound": "any", "server": "dns_outbound"},
-       {"clash_mode": "Direct", "server": "dns_direct"},
-       {"clash_mode": "Global", "server": "dns_proxy"},
-       {"rule_set": "geosite-cn", "action": "route","server": "dns_direct"},
-       {"rule_set": "geosite-geolocation-!cn", "server": "dns_proxy"}
+        {
+            "outbound": "any",
+            "server": "dns_outbound"
+          },
+          {
+            "clash_mode": "direct",
+            "server": "dns_direct"
+          },
+          {
+            "clash_mode": "global",
+            "server": "dns_proxy"
+          },
+          {
+            "query_type": [
+              "A",
+              "AAAA"
+            ],
+            "rule_set": "geosite-cn",
+            "server": "fakeip"
+          },
+          {
+            "rule_set": "geosite-cn",
+            "server": "dns_direct"
+          },
+          {
+            "type": "logical",
+            "mode": "and",
+            "rules": [
+              {
+                "rule_set": "geosite-geolocation-!cn",
+                "invert": true
+              },
+              {
+                "rule_set": "geoip-cn"
+              }
+            ],
+            "server": "dns_proxy",
+            "client_subnet": "114.114.114.114/24"
+          },
+          {
+            "query_type": [
+              "A",
+              "AAAA"
+            ],
+            "server": "fakeip"
+          }
      ],
      "final": "dns_proxy",
      "strategy": "ipv4_only"
@@ -44,7 +90,10 @@
   "inbounds": [
     {
       "type": "tun",
-      "address": "172.19.0.1/30",
+      "address": [
+        "172.19.0.0/30",
+        "fdfe:dcba:9876::0/126"
+      ],
       "auto_route": true,
       "auto_redirect": true,
       "strict_route": true,
