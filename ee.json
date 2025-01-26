@@ -86,7 +86,7 @@
 
       { "tag": "新加坡", "type": "urltest", "outbounds": ["{all}"], "filter": [{ "action": "exclude", "keywords": ["🇸🇬|新加坡|狮|Singapore"] }], "url": "http://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50 },
       { "tag": "韩国", "type": "urltest", "outbounds": ["{all}"], "filter": [{ "action": "exclude", "keywords": ["KR|Korea|KOR|首尔|韩|韓"] }], "url": "http://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50 },
-      { "tag": "台湾", "type": "urltest", "outbounds": ["{all}"], "filter": [{ "action": "exclude", "keywords": ["(台|新北|彰化|TW|Taiwan"] }], "url": "http://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50 },
+      { "tag": "台湾", "type": "urltest", "outbounds": ["{all}"], "filter": [{ "action": "exclude", "keywords": ["台|新北|彰化|TW|Taiwan"] }], "url": "http://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50 },
 
 
       { "tag": "GLOBAL", "type": "selector", "outbounds": ["{all}"]},
