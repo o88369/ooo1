@@ -93,9 +93,11 @@
 
       { "tag": "GLOBAL", "type": "selector", "outbounds": ["{all}"]},
       { "tag": "🎯 全球直连", "type": "direct" },
-      { "tag": "ub0", "type": "selector", "outbounds": ["REJECT","{ub0}"]},
-      { "tag": "ub1", "type": "selector", "outbounds": ["REJECT","{ub1}"]},
-      { "tag": "ub2", "type": "selector", "outbounds": ["REJECT","{ub2}"]}
+      { "tag": "拒绝", "type": "REJECT" },
+
+      { "tag": "ub0", "type": "selector", "outbounds": ["拒绝","{ub0}"]},
+      { "tag": "ub1", "type": "selector", "outbounds": ["拒绝","{ub1}"]},
+      { "tag": "ub2", "type": "selector", "outbounds": ["拒绝","{ub2}"]}
     ],
     
     "route": 
@@ -106,9 +108,6 @@
      [
        {"action": "sniff"},
        {"protocol": "dns", "action": "hijack-dns"},
-       {"clash_mode": "direct", "outbound": "🎯 全球直连"},
-       {"clash_mode": "global", "outbound": "GLOBAL"},
-       {"clash_mode": "global", "outbound": "GLOBAL"},
        {"domain_keyword": "tiktokcdn", "outbound": "中间"},
        {"domain_keyword": "googlevideo.com", "outbound": "中间"},
        {"domain": ["access.mypikpak.com", "access.mypikpak.net", "access.pikpak.me", "ccess.pikpakdrive.com"], "outbound": "🚀 节点选择"},
