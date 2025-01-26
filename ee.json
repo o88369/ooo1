@@ -155,14 +155,14 @@
       { "tag": "🐸 手动切换", "type": "selector", "outbounds": ["🎯 全球直连","♻️ 自动选择","{all}"]},
       { "tag": "🇭🇰 香港节点", "type": "selector", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["🇭🇰|HK|hk|香港|港|HongKong"] }] },
       { "tag": "🇯🇵 日本节点", "type": "selector", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["🇯🇵|JP|jp|日本|日|Japan"] }] },
-      { "tag": "🇺🇲 美国节点", "type": "urltest", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["🇺🇸|US|us|美国|美|United States"] }, { "action": "exclude", "keywords": ["香港|港|HK|hk|HongKong"] }] , "url": "http://1.1.1.1/generate_204", "interval": "5m", "tolerance": 50},
-      { "tag": "🔯 香港自动", "type": "urltest", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["🇭🇰|HK|hk|香港|港|HongKong"] }], "url": "http://1.1.1.1/generate_204", "interval": "5m", "tolerance": 50 },
-      { "tag": "♻️ 自动选择", "type": "urltest", "outbounds": ["{ub0}"], "filter": [{ "action": "exclude", "keywords": ["网站|地址|剩余|过期|时间|有效"] }], "url": "http://1.1.1.1/generate_204", "interval": "5m", "tolerance": 50 },
+      { "tag": "🇺🇲 美国节点", "type": "urltest", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["🇺🇸|US|us|美国|美|United States"] }, { "action": "exclude", "keywords": ["香港|港|HK|hk|HongKong"] }] , "url": "http://www.gstatic.com/generate_204", "interval": "5m", "tolerance": 50},
+      { "tag": "🔯 香港自动", "type": "urltest", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["🇭🇰|HK|hk|香港|港|HongKong"] }], "url": "http://www.gstatic.com/generate_204", "interval": "5m", "tolerance": 50 },
+      { "tag": "♻️ 自动选择", "type": "urltest", "outbounds": ["{ub0}"], "filter": [{ "action": "exclude", "keywords": ["网站|地址|剩余|过期|时间|有效"] }], "url": "http://www.gstatic.com/generate_204", "interval": "5m", "tolerance": 50 },
       { "tag": "国外网站", "type": "selector", "outbounds":["🎯 全球直连","♻️ 自动选择","🚀 节点选择", "流量无限", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换","新加坡","韩国","台湾", "🔯 香港自动"] },
 
-      { "tag": "新加坡", "type": "urltest", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["🇸🇬|新加坡|狮|Singapore"] }], "url": "http://1.1.1.1/generate_204", "interval": "5m", "tolerance": 50 },
-      { "tag": "韩国", "type": "urltest", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["KR|Korea|KOR|首尔|韩|韓"] }], "url": "http://1.1.1.1/generate_204", "interval": "5m", "tolerance": 50 },
-      { "tag": "台湾", "type": "urltest", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["台|新北|彰化|TW|Taiwan"] }], "url": "http://1.1.1.1/generate_204", "interval": "5m", "tolerance": 50 },
+      { "tag": "新加坡", "type": "urltest", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["🇸🇬|新加坡|狮|Singapore"] }], "url": "http://www.gstatic.com/generate_204", "interval": "5m", "tolerance": 50 },
+      { "tag": "韩国", "type": "urltest", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["KR|Korea|KOR|首尔|韩|韓"] }], "url": "http://www.gstatic.com/generate_204", "interval": "5m", "tolerance": 50 },
+      { "tag": "台湾", "type": "urltest", "outbounds": ["{ub0}","{ub1}"], "filter": [{ "action": "include", "keywords": ["台|新北|彰化|TW|Taiwan"] }], "url": "http://www.gstatic.com/generate_204", "interval": "5m", "tolerance": 50 },
 
 
       { "tag": "GLOBAL", "type": "selector", "outbounds": ["{all}"]},
