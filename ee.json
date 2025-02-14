@@ -95,7 +95,8 @@
         },
         {
             "inbound": [
-                "tun-in"
+                "tun-in",
+             "mixed-in"
               ],
           "query_type": [
             "A",
