@@ -28,7 +28,7 @@
     "servers": [
       {
         "tag": "dns_direct",
-        "type": "local",
+        "type": "local"
       },
       {
         "tag": "dns_outbound",
