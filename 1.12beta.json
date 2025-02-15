@@ -29,29 +29,25 @@
       {
         "tag": "dns_direct",
         "type": "local",
-        "address_strategy": "ipv4_only",
-        "strategy": "ipv4_only",
-        "detour": "🎯 全球直连"
       },
       {
         "tag": "dns_outbound",
         "type": "https",
-        "address": "1.1.1.1",
-        "address_strategy": "ipv4_only",
-        "strategy": "ipv4_only",
+        "server": "1.1.1.1",
         "detour": "🎯 全球直连"
       },
       {
         "tag": "dns_proxy",
         "type": "h3",
-        "address": "8.8.8.8",
-        "address_strategy": "ipv4_only",
-        "strategy": "ipv4_only",
+        "server": "8.8.8.8",
+
         "detour": "🚀 节点选择"
       },
       {
           "tag": "fakeip",
-          "address": "fakeip"
+          "address": "fakeip",      
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
         }
     ],
     "rules": [
@@ -179,7 +175,7 @@
  {
    "auto_detect_interface": true,
    "default_domain_resolver": {
-    "server": "local"
+    "server": "dns_direct"
   },
    "final": "🐠 漏网之鱼",
    "rules": 
