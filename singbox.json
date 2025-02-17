@@ -132,7 +132,9 @@
           "listen_port": 7892
         }
       ],
-    "outbounds": [ ],
+    "outbounds": [
+        { "tag": "🎯 全球直连", "type": "direct" }
+     ],
   
     "route":   
    {
