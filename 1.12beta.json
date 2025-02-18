@@ -85,7 +85,7 @@
           "geosite-tiktok",
           "geosite-google",
           "geosite-x",
-          "geosite-chat"
+          "geosite-GPT"
         ],
         "server": "fakeip"
       },
@@ -215,10 +215,11 @@
      {"rule_set": "geosite-private", "outbound": "🎯 全球直连"},
      {"rule_set": "geosite-tiktok", "outbound": "🎵 TikTok"},
      {"rule_set": ["geosite-telegram", "geoip-telegram"], "outbound": "📲 Telegram"},
-     {"rule_set": "geosite-chatgpt", "outbound": "🤖 OpenAI"},
+     {"rule_set": "geosite-GPT", "outbound": "🤖 OpenAI"},
      {"rule_set": "geosite-youtube", "outbound": "📹 YouTube"},
      {"rule_set": "geosite-github", "outbound": "👨‍💻 Github"},
      {"rule_set": "geosite-bing", "outbound": "👨‍💻 Github"},
+     {"domain_keyword": "copilot", "outbound": "👨‍💻 Github"},
      {"rule_set": "geosite-x", "outbound": "x"},
      {"rule_set": ["geosite-google", "geoip-google"], "outbound": "🍀 Google"},
      {"rule_set": ["geosite-telegram", "geoip-telegram"], "outbound": "📲 Telegram"},
@@ -238,7 +239,7 @@
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/twitter.srs",
         "download_detour": "🚀 节点选择"
       },
-    { "tag": "geosite-chatgpt", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-chat-!cn.srs", "download_detour": "🚀 节点选择" },
+    { "tag": "geosite-GPT", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-chat-!cn.srs", "download_detour": "🚀 节点选择" },
     { "tag": "geosite-youtube", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs", "download_detour": "🚀 节点选择" },
     { "tag": "geosite-google", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs", "download_detour": "🚀 节点选择" },
     { "tag": "geosite-github", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs", "download_detour": "🚀 节点选择" },
