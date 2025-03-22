@@ -10,7 +10,7 @@
       "external_ui": "ui2",
       "secret": "123456",
       "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
-      "external_ui_download_detour": "🔯 香港自动",
+      "external_ui_download_detour": "新加坡",
       "default_mode": "rule"
     },
     "cache_file": {
@@ -35,7 +35,7 @@
         "tag": "dns_proxy",
         "type": "https",
         "server": "8.8.8.8",
-        "detour": "🔯 香港自动"
+        "detour": "新加坡"
       },
       {
         "tag": "fakeip",
@@ -90,7 +90,6 @@
     ],
     "final": "dns_proxy",
     "client_subnet": "202.103.224.68/24",
-
     "strategy": "ipv4_only"
   },
   "inbounds": [
