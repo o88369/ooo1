@@ -32,6 +32,11 @@
         "server_port": 53
       },
       {
+        "tag": "dns_tongyong",
+        "type": "https",
+        "server": "223.5.5.5"
+      },
+      {
         "tag": "dns_proxy",
         "type": "https",
         "server": "8.8.8.8",
@@ -52,6 +57,16 @@
       {
         "clash_mode": "global",
         "server": "dns_proxy"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "rule_set": [
+          "geosite-github"
+        ],
+        "server": "dns_tongyong"
       },
       {
         "query_type": [
