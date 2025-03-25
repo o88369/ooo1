@@ -2,6 +2,8 @@
   "log": {
     "disabled": false,
     "level": "debug",
+    "output": "/var/log/sing-box.log",
+
     "timestamp": true
   },
   "experimental": {
@@ -21,10 +23,6 @@
   },
   "dns": {
     "servers": [
-      {
-        "tag": "dns_direct",
-        "type": "local"
-      },
       {
         "type": "udp",
         "tag": "dns_ss",
