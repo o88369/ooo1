@@ -93,6 +93,9 @@
           "server": "dns_ss"
         },
         {
+          "domain_keyword": [
+            "cloudflare"
+          ],
           "rule_set": "geosite-geolocation-!cn",
           "server": "dns_proxy",
           "client_subnet": "202.103.224.68/24"
@@ -103,24 +106,16 @@
     },
     "inbounds": [
       {
-        "tag": "tun-in",
-  
-        "type": "tun",
+        "interface_name": "tun01",
         "address": [
-          "172.19.0.0/30",
-          "fdfe:dcba:9876::0/126"
+          "172.18.0.1/30",
+          "fdfe:dcba:9876::1/126"
         ],
+        "mtu": 9000,
         "auto_route": true,
         "auto_redirect": true,
         "strict_route": true,
-        "stack": "system",
-        "platform": {
-          "http_proxy": {
-            "enabled": true,
-            "server": "0.0.0.0",
-            "server_port": 7891
-          }
-        }
+        "stack": "system"
       },
       {
         "tag": "mixed-in",
@@ -176,31 +171,15 @@
     },
      "final": "🐠 漏网之鱼",
      "rules": 
-  
      [
-        {
-            "type": "logical",
-            "mode": "or",
-            "rules":[
-              {
-                "port":53
-              },
-              {
-                "protocol": "dns"
-              }
-            ],
-            "action": "hijack-dns"
-          },
-  
-  
-        {
-          "inbound": ["tun-in", "mixed-in"],
+      {
           "action": "sniff",
           "timeout": "1s"
-        },
+      },
+      {"protocol": "dns", "action": "hijack-dns"},
        {"domain_keyword": "tiktokcdn", "outbound": "中间"},
        {"domain_keyword": "googlevideo.com", "outbound": "中间"},
-       {"domain": ["access.mypikpak.com", "access.mypikpak.net", "access.pikpak.me", "ccess.pikpakdrive.com"], "outbound": "🚀 节点选择"},
+       {"domain": ["access.mypikpak.com", "access.mypikpak.net", "access.pikpak.me", "access.pikpakdrive.com"], "outbound": "🚀 节点选择"},
        { "domain_keyword": [        "mypikpak",        "pikpak",     "qq.com",     "douyin"      ],      "outbound": "🎯 全球直连"    },
        {"domain": ["clash.razord.top", "yacd.metacubex.one", "yacd.haishan.me", "d.metacubex.one"], "outbound": "🎯 全球直连"},
        {"rule_set": "geosite-private", "outbound": "🎯 全球直连"},
