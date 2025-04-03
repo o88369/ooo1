@@ -105,7 +105,10 @@
       "strategy": "ipv4_only"
     },
     "inbounds": [
+
       {
+        "tag": "tun-in",
+        "type": "tun",
         "interface_name": "tun01",
         "address": [
           "172.18.0.1/30",
