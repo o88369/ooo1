@@ -29,14 +29,28 @@
     "servers": 
     [
       {"tag": "dns_ss", "address": "202.103.224.68", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
-      {"tag": "dns_tongyong", "address": "‌223.5.5.5", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🎯 全球直连"},
-      {"tag": "dns_proxy", "address": "tls://8.8.8.8", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🔯 香港自动"},
+      {
+        "tag": "dns_tongyong",
+        "address": "https://223.5.5.5/dns-query",
+        "address_strategy": "ipv4_only",
+        "strategy": "ipv4_only",
+        "detour": "🎯 全球直连"
+      },
+      {
+        "tag": "dns_proxy",
+        "address": "https://8.8.8.8/dns-query",
+        "address_strategy": "ipv4_only",
+        "strategy": "ipv4_only",
+        "detour": "新加坡"
+      },
       {
         "tag": "fakeip",
         "address": "fakeip"
       }
     ],
     "rules": [
+      {"outbound": "any", "server": "dns_tongyong"},
+
       {
         "clash_mode": "direct",
         "server": "dns_ss"
@@ -118,7 +132,7 @@
   "outbounds": [
     { "tag": "国外网站", "type": "selector", "outbounds":["🇺🇲 美国节点","新加坡","🎯 全球直连","♻️ 自动选择","🚀 节点选择", "流量无限", "🇭🇰 香港节点", "🇯🇵 日本节点",  "🐸 手动切换","新加坡","韩国","台湾", "🔯 香港自动"] },
 
-    { "tag": "流量无限", "type": "urltest", "outbounds": ["{ub2}"] ,"url": "https://www.google.com/generate_204", "interval": "3m", "tolerance": 1 },
+    { "tag": "流量无限", "type": "urltest", "outbounds": ["{ub2}"] ,"url": "https://www.google.com/generate_204", "interval": "5m", "tolerance": 1 },
     { "tag": "中间", "type": "selector", "outbounds": ["流量无限", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换", "♻️ 自动选择", "🎯 全球直连","ub0","ub1","ub2","新加坡","韩国","台湾", "🔯 香港自动"] },
     { "tag": "🚀 节点选择", "type": "selector", "outbounds": ["🇯🇵 日本节点","🔯 香港自动", "🇭🇰 香港节点", "🇺🇲 美国节点","新加坡","韩国","台湾", "🐸 手动切换", "♻️ 自动选择", "🎯 全球直连"] },
     { "tag": "📹 YouTube", "type": "selector", "outbounds": ["🇺🇲 美国节点","♻️ 自动选择","🚀 节点选择", "流量无限", "🇭🇰 香港节点", "🇯🇵 日本节点", "🐸 手动切换","新加坡","韩国","台湾", "🔯 香港自动"] },
@@ -154,9 +168,6 @@
   "route": 
  {
   "default_interface": "wan1332",
-  "default_domain_resolver": {
-    "server": "dns_ss"
-  },
    "final": "🐠 漏网之鱼",
    "rules": 
    [
